@@ -1,5 +1,5 @@
 {
-    "name": "docx",
+    "name": "@xnscu/docx",
     "version": "9.0.2",
     "description": "Easily generate .docx files with JS/TS with a nice declarative API. Works for Node and on the Browser.",
     "type": "module",

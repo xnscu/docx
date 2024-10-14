@@ -17,6 +17,7 @@ import { EmphasisMark, EmphasisMarkType } from "./emphasis-mark";
 import { CharacterSpacing, Color, Highlight, HighlightComplexScript } from "./formatting";
 import { createLanguageComponent, ILanguageOptions } from "./language";
 import { IFontAttributesProperties, RunFonts } from "./run-fonts";
+import { ITextOutlineOptions, RunTextOutline } from "./run-text-outline";
 import { SubScript, SuperScript } from "./script";
 import { Underline, UnderlineType } from "./underline";
 
@@ -92,6 +93,7 @@ export interface IRunStylePropertiesOptions {
     readonly subScript?: boolean;
     readonly superScript?: boolean;
     readonly font?: string | IFontOptions | IFontAttributesProperties;
+    readonly textOutline?: ITextOutlineOptions;
     readonly highlight?: (typeof HighlightColor)[keyof typeof HighlightColor];
     readonly highlightComplexScript?: boolean | string;
     readonly characterSpacing?: number;
@@ -318,6 +320,10 @@ export class RunProperties extends IgnoreIfEmptyXmlComponent {
 
         if (options.math) {
             this.push(new OnOffElement("w:oMath", options.math));
+        }
+
+        if (options.textOutline) {
+          this.root.push(new RunTextOutline(options.textOutline));
         }
     }
 
