@@ -43,7 +43,6 @@ jobs:
       - name: Publish to github
         if: steps.version_changed.outputs.changed == 'true'
         run: |
-          corepack enable
           npm i
           npm publish
         env:
